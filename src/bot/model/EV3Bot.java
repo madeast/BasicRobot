@@ -62,6 +62,17 @@ public class EV3Bot
 	
 	public void driveShort()
 	{
+		botPilot.travel(1048);
+		botPilot.rotate(60);
+		botPilot.travel(3048);
+		botPilot.rotate(-60);
+		botPilot.travel(5588);
+		botPilot.rotate(60);
+		botPilot.travel(3810);
+	}
+	
+	public void driveLong()
+	{
 		botPilot.travel(3810);
 		botPilot.rotate(-60);
 		botPilot.travel(5588);
@@ -69,11 +80,7 @@ public class EV3Bot
 		botPilot.travel(3048);
 		botPilot.rotate(-60);
 		botPilot.travel(1048);
-	}
-	
-	public void driveLong()
-	{
-		
+
 	}
 	
 	private void displayMessage()
