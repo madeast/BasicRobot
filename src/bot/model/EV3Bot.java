@@ -96,7 +96,7 @@ public class EV3Bot
 		while(bodiesInt <= 100)
 		{
 			
-			if(ultrasonicSamples[0] < .5 )
+			if(ultrasonicSamples[0] < .1 )
 			{
 				botPilot.travel(-50);
 				botPilot.rotate(60);
