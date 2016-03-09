@@ -32,7 +32,7 @@ public class EV3Bot
 		this.waitTime = 4000;
 		
 		distanceSensor = new EV3UltrasonicSensor(LocalEV3.get().getPort("S1"));
-		backTouch = new EV3TouchSensor(LocalEV3.get().getPort("S2"));
+		//backTouch = new EV3TouchSensor(LocalEV3.get().getPort("S2"));
 		
 		setupPilot();
 		displayMessage();
@@ -49,26 +49,27 @@ public class EV3Bot
 	{
 		ultrasonicSamples = new float [distanceSensor.sampleSize()];
 		distanceSensor.fetchSample(ultrasonicSamples, 0);
-		if(ultrasonicSamples[0] < 20 )
+		if(ultrasonicSamples[0] < 1 )
 		{
-			driveShort();
+			driveLong();
 		}
 		else
 		{
-			driveLong();
+			driveShort();
 		}
 		displayMessage("I am at the other door");
 	}
 	
 	public void driveShort()
 	{
-		botPilot.travel(1048);
-		botPilot.rotate(60);
-		botPilot.travel(3048);
-		botPilot.rotate(-60);
-		botPilot.travel(5588);
-		botPilot.rotate(60);
-		botPilot.travel(3810);
+//		botPilot.travel(1048);
+//		botPilot.rotate(60);
+//		botPilot.travel(3048);
+//		botPilot.rotate(-60);
+//		botPilot.travel(5588);
+//		botPilot.rotate(60);
+//		botPilot.travel(3810);
+			
 	}
 	
 	public void driveLong()
@@ -81,6 +82,33 @@ public class EV3Bot
 		botPilot.rotate(-60);
 		botPilot.travel(1048);
 
+	}
+	
+	public void driveAllRoom()
+	{
+		int bodiesInt;
+		
+		bodiesInt = 0;
+		
+		ultrasonicSamples = new float [distanceSensor.sampleSize()];
+		distanceSensor.fetchSample(ultrasonicSamples, 0);
+		
+		while(bodiesInt <= 100)
+		{
+			
+			if(ultrasonicSamples[0] < .5 )
+			{
+				botPilot.travel(-50);
+				botPilot.rotate(60);
+			}
+			else
+			{
+				botPilot.travel(50);
+			}
+			
+			bodiesInt++;
+			distanceSensor.fetchSample(ultrasonicSamples, 0);
+		}
 	}
 	
 	private void displayMessage()
