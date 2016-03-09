@@ -100,6 +100,7 @@ public class EV3Bot
 			{
 				botPilot.travel(-50);
 				botPilot.rotate(60);
+				bodiesInt--;
 			}
 			else
 			{

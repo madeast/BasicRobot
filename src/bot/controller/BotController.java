@@ -23,7 +23,8 @@ public class BotController
 	}
 	public void start()
 	{
-		Android.driveRoom();
+		//Android.driveRoom();
+		Android.driveAllRoom();
 	}
 	
 	
